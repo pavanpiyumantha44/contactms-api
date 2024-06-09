@@ -5,9 +5,13 @@ import './config/db.js';
 import {Router} from './routes/route.js'
 
 const app = express();
-dotenv.config({path:"./config/.env"});
+dotenv.config({path: "./config/.env"});
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:["https://contactms-client-beta.vercel.app"],
+  methods:["GET","POST","PUT","DELETE"],
+  credentials:true
+}));
 
 app.use('/contactms',Router)
 
